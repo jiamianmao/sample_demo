@@ -68,7 +68,7 @@ class App extends Component {
           <Route path='/tel' component={Tel}></Route>
           <PrivateRoute path='/my' component={MyInit}></PrivateRoute>
           <Route path='/product/:id' component={Product}></Route>
-          <Route path='/custrominfo' component={CustromInfo}></Route>
+          <PrivateRoute path='/custrominfo' component={CustromInfo}></PrivateRoute>
           <Route path='/login' component={Login}></Route>
           <Route component={NotFound}></Route>
         </Switch>
