@@ -1,0 +1,17 @@
+.order_box {
+  font-size: 12px;
+  .item {
+    &.product1 {
+      color: red;
+    }
+    &.product2 {
+      color: green;
+    }
+    &.product3 {
+      color: purple;
+    }
+    &~.item {
+      margin-top: 20px;
+    }
+  }
+}

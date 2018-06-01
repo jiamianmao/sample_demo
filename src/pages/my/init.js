@@ -26,10 +26,15 @@ const About = Loadable({
   loader: () => import('@/pages/my/children/about'),
   loading: Loading
 })
+const Content = Loadable({
+  loader: () => import('@/pages/my/children/content'),
+  loading: Loading
+})
 const Index = Loadable({
   loader: () => import('./index'),
   loading: Loading
 })
+
 
 class MyInit extends Component {
 
@@ -40,7 +45,8 @@ class MyInit extends Component {
         <Route path='/my/index' component={Index}></Route>
         <Route path='/my/order' component={Order}></Route>
         <Route path='/my/address' component={Address}></Route>
-        <Route path='/my/car' component={Car}></Route>
+        <Route exact path='/my/car' component={Car} />
+        <Route path='/my/car/content' component={Content} />        
         <Route path='/my/account' component={Account}></Route>
         <Route path='/my/about' component={About}></Route>
       </Switch>

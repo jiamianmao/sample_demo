@@ -1,9 +1,27 @@
 import React, { Component } from 'react'
+import { getAddressList } from '@/api'
 
 class Address extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      adddressList: []
+    }
+  }
+
+  componentDidMount() {
+    getAddressList().then(res => {
+      this.setState({
+        adddressList: res.data
+      })
+    })
+  }
+
   render() {
     return (
-      <h3>这是我的地址</h3>
+      <div className='addressManage'>
+        <h3>地址</h3>
+      </div>
     )
   }
 }
