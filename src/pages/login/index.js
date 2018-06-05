@@ -14,10 +14,6 @@ class Login extends Component {
     this.login = this.login.bind(this)    
   }
 
-  componentDidMount() {
-    console.log(this.props)
-  }
-
   handleChaneg(e) {
     const { name, value } = e.target
     this.setState({

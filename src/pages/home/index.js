@@ -31,7 +31,7 @@ class Home extends Component {
   }
   
   render() {
-    const { imgList} = this.state
+    const { imgList } = this.state
     return (
       <div className="home_box">
         <div className="avatar">

@@ -15,6 +15,10 @@ function Loading() {
 // import NotFound from '@/pages/404'
 
 // router base code splitting
+const Conatainer = Loadable({
+  loader: () => import('@/pages/container'),
+  loading: Loading
+})
 const Home = Loadable({
   loader: () => import('@/pages/home'),
   loading: Loading
@@ -44,6 +48,11 @@ const NotFound = Loadable({
   loading: Loading
 })
 
+const Test = Loadable({
+  loader: () => import('@/test'),
+  loading: Loading
+})
+
 // 受保护的路由
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -70,6 +79,7 @@ class App extends Component {
           <Route path='/product/:id' component={Product}></Route>
           <PrivateRoute path='/custrominfo' component={CustromInfo}></PrivateRoute>
           <Route path='/login' component={Login}></Route>
+          <Route path='/test' component={Test}></Route>
           <Route component={NotFound}></Route>
         </Switch>
       </div>

@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Tab from '@/components/tab'
+import PropTypes from 'prop-types'
 
 class MyIndex extends Component {
+  static childContextTypes = {
+    user: PropTypes.string
+  }
+
+  getChildContext() {
+    return {
+      user: '小菜猫'
+    }
+  }
   render() {
     return (
       <div>
