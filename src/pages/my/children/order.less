@@ -1,17 +1,56 @@
 .order_box {
   font-size: 12px;
   .item {
-    &.product1 {
-      color: red;
-    }
-    &.product2 {
-      color: green;
-    }
-    &.product3 {
-      color: purple;
-    }
+    width: 100%;
+    background: #fff;
     &~.item {
-      margin-top: 20px;
+      margin-top: 10px;
+    }
+    .row {
+      padding: 0 20px;
+      height: 24px;
+      line-height: 24px;
+      display: flex;
+      justify-content: space-between;
+      .red {
+        color: red;
+      }
+    }
+    .content {
+      padding: 10px 20px;
+      display: flex;
+      &.A {
+        background: #f0e9e1;
+      }
+      &.B {
+        background: #f0dcdc;
+      }
+      &.C {
+        background: #e1e6f0;
+      }
+      &.D {
+        background: #fff4f4;
+      }
+      &.E {
+        background: #eeebf0;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      .text {
+        flex: 1;
+        padding-left: 10px;
+        p, h3 {
+          line-height: 24px;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .price {
+      padding: 0 20px;
+      line-height: 30px;
+      height: 30px;
     }
   }
 }

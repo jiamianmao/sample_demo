@@ -1,24 +1,12 @@
 import React, { Component } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Loadable  from 'react-loadable'
-import Storage from 'good-storage'
+import Cookie from 'js-cookie'
 import './App.css'
+import 'antd-mobile/dist/antd-mobile.css'
 function Loading() {
   return <div>Loading...</div>;
 }
-// import Home from '@/pages/home'
-// import MyInit from '@/pages/my/init'
-// import Product from '@/pages/product'
-// import CustromInfo from '@/pages/custromInfo'
-// import Tel from '@/pages/tel'
-// import Login from '@/pages/login'
-// import NotFound from '@/pages/404'
-
-// router base code splitting
-const Conatainer = Loadable({
-  loader: () => import('@/pages/container'),
-  loading: Loading
-})
 const Home = Loadable({
   loader: () => import('@/pages/home'),
   loading: Loading
@@ -31,8 +19,8 @@ const Product = Loadable({
   loader: () => import('@/pages/product'),
   loading: Loading
 })
-const CustromInfo = Loadable({
-  loader: () => import('@/pages/custromInfo'),
+const Pay = Loadable({
+  loader: () => import('@/pages/pay'),
   loading: Loading
 })
 const Tel = Loadable({
@@ -48,15 +36,20 @@ const NotFound = Loadable({
   loading: Loading
 })
 
+// const Test = Loadable({
+//   loader: () => import('@/test'),
+//   loading: Loading
+// })
+
 const Test = Loadable({
-  loader: () => import('@/test'),
+  loader: () => import('@/pages/asTest'),
   loading: Loading
 })
 
 // 受保护的路由
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
-    Storage.get('info') ? (
+    Cookie.get('sessionId') ? (
       <Component />
     ) : (
       <Redirect to={{
@@ -77,7 +70,7 @@ class App extends Component {
           <Route path='/tel' component={Tel}></Route>
           <PrivateRoute path='/my' component={MyInit}></PrivateRoute>
           <Route path='/product/:id' component={Product}></Route>
-          <PrivateRoute path='/custrominfo' component={CustromInfo}></PrivateRoute>
+          <PrivateRoute path='/pay' component={Pay}></PrivateRoute>
           <Route path='/login' component={Login}></Route>
           <Route path='/test' component={Test}></Route>
           <Route component={NotFound}></Route>

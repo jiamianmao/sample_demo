@@ -1,12 +1,7 @@
 const ORDER = 'SET_ORDER'
 
 // state
-const initState = {
-  productId: '',
-  type: '',
-  price: 0
-}
-
+const initState = {}
 
 // reducer (mutations)
 export function order(state = initState, action) {

@@ -63,7 +63,7 @@ class Demo extends Component{
     console.log('执行了？')
     return (
       <div>
-        {this.props.content.title.age}你好，世界.{this.props.content.title.name}
+        {this.props.content.title.age}{this.props.content.title.name}
       </div>
     )
   }

@@ -1,0 +1,72 @@
+.myIndex {
+  width: 100vw;
+  display: flex;
+  flex-flow: column nowrap;
+  background: #EFEFF4;
+  padding-bottom: 60px;
+  .top {
+    height: 164px;
+    width: 100vw;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #EFEFF4;
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+  }
+  .rightList {
+    padding: 10px;
+    height: 200px;
+    background: #fff;
+    .box {
+      width: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      .item {
+        width: 25%;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 12px;
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+  .funcBox {
+    margin-top: 10px;
+    background: #fff;
+    .funcItem {
+      .funcItem_Link {
+        height: 50px;
+        width: 100vw;
+        padding: 0 14px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        span {
+          flex: 1;
+        }
+        img {
+          width: 12px;
+          height: 12px;
+          &:first-child {
+            margin-right: 10px;
+          }
+        }
+      }
+      &~.funcItem {
+        border-top: 1px solid #ccc;
+      }
+    }
+  }
+  
+}

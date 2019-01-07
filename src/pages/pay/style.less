@@ -1,0 +1,21 @@
+.custromInfo {
+  padding-bottom: 50px;
+  .selectPeople {
+    width: 100vw;
+    padding: 10px 20px;
+    .item {
+      display: flex;
+      &~.item {
+        margin-top: 20px;
+      }
+      label {
+        width: 25%;
+        text-align: right;
+      }
+      input {
+        flex: 1;
+        margin-left: 10px;
+      }
+    }
+  }
+}

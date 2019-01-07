@@ -1,0 +1,48 @@
+.userInfo {
+  width: 100vw;
+  height: 100vh;
+  .top {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .file {
+      width: 80px;
+      height: 80px;
+      background: red;
+      color: transparent;
+      position: absolute;
+      left: 60px;
+      top: 30px;
+      opacity: 0;
+    }
+  }
+  .bottom {
+    margin-top: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 30px;
+    background: #fff;
+    li {
+      display: flex;
+      height: 50px;
+      line-height: 50px;
+      &~li {
+        border-top: 1px solid #999;
+      }
+      .left {
+        width: 100px;
+      }
+      .right {
+        flex: 1;
+      }
+    }
+  }
+}

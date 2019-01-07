@@ -1,87 +1,58 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { changeCarManage, clearCarManage } from '@/redux/carManage'
+import { getVehicleList } from '@/api/my'
+import Storage from 'good-storage'
+import './people.less'
 
-@connect (
-  state => state,
-  { changeCarManage, clearCarManage }
-)
-
-class Car extends Component {
+class People extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      no: '',
-      color: '',
-      model: '',
-      user: '',
-      content: ''
+      carList: []
     }
   }
 
   componentDidMount() {
-    this.setState(this.props.carManage)
+    let userInfo = Storage.session.get('userInfo')
+    userInfo && JSON.parse(userInfo)
+    this._getVehicleList(userInfo.id)
   }
 
-  componentWillUnmount() {
-    this.props.changeCarManage(this.state)
+  hnadlePeople(id) {
+    const url = id ? `/my/people/create/${id}` : '/my/people/create'
+    this.props.history.push(url)
   }
 
-  handleChange(e) {
-    const { id, value } = e.target
-    this.setState({
-      [id]: value
-    })
-  }
-
-  handleSubmit() {
-    this.setState({
-      no: '',
-      color: '',
-      model: '',
-      user: '',
-      content: ''
-    }, () => {
-      this.props.clearCarManage()
-      this.props.history.go(-1)
+  _getVehicleList(id) {
+    getVehicleList(id).then(res => {
+      this.setState({
+        carList: res.payload
+      })
     })
   }
 
   render() {
-    const { no, color, model, user, content } = this.state
+    const { carList } = this.state
     return (
-      <div>
-        <h3>车辆管理</h3>
-        <div>
-          <p>
-            <label htmlFor="no">车牌号</label>
-            <input type="text" id='no' value={no} onChange={e => this.handleChange(e)} />
-          </p>
-          <p>
-            <label htmlFor="color">颜色</label>
-            <input type="text" id='color' value={color} onChange={e => this.handleChange(e)} />
-          </p>
-          <p>
-            <label htmlFor="model">车型</label>
-            <input type="text" id='model' value={model} onChange={e => this.handleChange(e)} />
-          </p>
-          <p>
-            <label htmlFor="user">车主</label>
-            <input type="text" id='user' value={user} onChange={e => this.handleChange(e)} />
-          </p>
-          <p>
-            <label htmlFor="content">有什么想说的？</label>
-            <Link to='/my/car/content'>
-              <input type="text" value={content} />
-            </Link>
-          </p>
-        </div>
-
-        <button onClick={() => this.handleSubmit()}>提交</button>
+      <div className='people'>
+        <header className="top">
+          <h3>常用权益车</h3>
+          <svg onClick={() => this.hnadlePeople()} className="icon" aria-hidden="true">
+            <use xlinkHref="#icon-plus"></use>
+          </svg>
+        </header>
+        <main>
+          {carList.map(item => (
+            <section className='item' key={item.id}>
+              <div className="left">
+                <div className="name">所有人：{ item.owner }</div>
+                <div className="idCard">身份证：{ item.plateNumber }</div>
+              </div>
+            </section>
+          ))}
+        </main>
       </div>
     )
   }
 }
 
-export default Car
+export default People
